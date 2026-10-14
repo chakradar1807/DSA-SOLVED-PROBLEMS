@@ -1,11 +1,11 @@
 class Solution:
     def firstUniqChar(self, s: str) -> int:
-
-        for i in range(len(s)):
+        count_map = {}
+        for char in s:
+            count_map[char] = count_map.get(char, 0) + 1
             
-            if s[i] not in s[:i]:
+        for i in range(len(s)):
+            if count_map[s[i]] == 1:
+                return i
                 
-                if s[i] not in s[i+1:]:
-                    return i
-                    
         return -1
